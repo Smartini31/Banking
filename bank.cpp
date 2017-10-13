@@ -17,6 +17,9 @@ class Account {
         bool get_credit() {
             return is_credit;
         }
+        void change_balance(double amount) {
+            balance =+ amount;
+        }
         void constructor( string, bool );
 };
 
@@ -75,7 +78,7 @@ void Bank::remove_account( int position ) {
 }
 
 void Bank::transaction( int position, double amount ) {
-    accounts[position].get_balance() = accounts[position].get_balance() + amount; 
+    accounts[position].change_balance(amount);
 }
 
 void Bank::show_accounts() {
