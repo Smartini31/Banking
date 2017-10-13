@@ -29,7 +29,7 @@ class Bank {
     bool verify_account(string);
     int get_account_position(string);
     
-    Account info();
+    void info();
 };
 
 void Account::get_info(string name) {
@@ -53,9 +53,9 @@ void Bank::create_account(Account account) {
     accounts.push_back(account);
 }
 
-Account Bank::info() {
+void Bank::info() {
     for ( int i=0 ; i < 4 ; i++ ) {
-        cout << accounts[i] << endl;
+        cout << accounts[i].get_name() << endl;
     }
 }
 
