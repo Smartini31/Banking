@@ -17,7 +17,7 @@ class Account {
         bool get_credit() {
             return is_credit;
         }
-        void get_info(string);
+        void constructor( string, bool );
 };
 
 class Bank {
@@ -29,50 +29,56 @@ class Bank {
     bool verify_account(string);
     int get_account_position(string);
     
-    void info();
+    int get_size();
 };
 
-void Account::get_info(string name) {
-    string yn;
+void Account::constructor(string name, bool credit) {
+    is_credit = credit;
     account_name = name;
-    cin >> yn;
-    if ( yn == "y" ) {
-        is_credit;
-    }
-    else {
-        !is_credit;
-    }
+    balance = 0;
 }
 
 bool Bank::verify_account(string name) {
-    //Verifying if account already exists.
-    //For loop and if i stops before certain point account exists.
+    for ( int i=0 ; i<=accounts.size() ; i++ ) {
+        if ( accounts[i].get_name() == name ) {
+                return true;
+        }
+    }
+    return false;
 }
 
 void Bank::create_account(Account account) {
     accounts.push_back(account);
 }
 
-void Bank::info() {
-    for ( int i=0 ; i < 4 ; i++ ) {
-        cout << accounts[i].get_name() << endl;
-    }
+int Bank::get_size() {
+    return accounts.size();
 }
 
 int main() {
     string first_input;
+    int line = 0
     Bank bank;
     
     while ( cin >> first_input) {
-       
+        line++;
         if ( first_input == "c" ) {
             Account account;
-            string name;
-            cin >> name;
+            string name, yn;
+            bool is_credit;
             
-            bool do_continue = bank.verify_account(name);
-            account.get_info(name);
-            bank.create_account(account);
+            cin >> name >> yn;
+            if ( yn == "y" ) {
+                is_credit = true;
+            } else {
+                is_credit = false;
+            }
+            bool do_continue = bank.verify_account (name );
+            if ( do_continue ) { 
+                account.constructor( name, is_credit);
+                bank.create_account( account );
+            }
+            
         }
         else if (first_input == "t") {
             //bank.transaction();
@@ -82,6 +88,6 @@ int main() {
         }
     }
     
-    bank.info(); 
+    cout << bank.get_size() << endl;
     return 0;
 }
