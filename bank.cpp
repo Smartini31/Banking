@@ -124,7 +124,7 @@ int main() {
                 account.constructor( name, is_credit );
                 bank.create_account( account );
             } else {
-                cout << "error on line " << line << ": account already exists" << endl;
+                cerr << "error on line " << line << ": account already exists" << endl;
             }
         }
         
@@ -139,12 +139,12 @@ int main() {
                 double balance = bank.get_balance ( position );
                 bool is_credit = bank.get_credit ( position );
                 if ( is_credit == false && (balance+amount)<0 ) {
-                    cout << "error on line " << line << ": account cannot hold negative balance" << endl;
+                    cerr << "error on line " << line << ": account cannot hold negative balance" << endl;
                 } else {
                     bank.transaction( position, amount );
                 }
             } else {
-                cout << "error on line " << line << ": account does not exist" << endl;
+                cerr << "error on line " << line << ": account does not exist" << endl;
             }
         }
         
@@ -159,10 +159,10 @@ int main() {
                 if ( balance > 0 ){
                     bank.remove_account ( position );
                 } else {
-                    cout << "error on line " << line << ": account holds negative balance" << endl;
+                    cerr << "error on line " << line << ": account holds negative balance" << endl;
                 }
             } else {
-                cout << "error on line " << line << ": account does not exist" << endl;
+                cerr << "error on line " << line << ": account does not exist" << endl;
             }
         }
     }
