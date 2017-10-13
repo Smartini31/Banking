@@ -1,0 +1,11 @@
+c Ann y
+c Bob n
+c Carl y
+t Ann +200.00
+t Bob -50.0
+t Carl -20.05
+t Dan +1000.0
+r Carl
+t Bob +30.0
+r Ann
+c Bob y
