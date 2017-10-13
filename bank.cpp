@@ -18,7 +18,7 @@ class Account {
             return is_credit;
         }
         void change_balance(double amount) {
-            balance =+ amount;
+            balance = balance + amount;
         }
         void constructor( string, bool );
 };
@@ -83,7 +83,7 @@ void Bank::transaction( int position, double amount ) {
 
 void Bank::show_accounts() {
     cout << endl;
-    int balance;
+    double balance;
     
     for ( int i=0 ; i<accounts.size() ; i++) {
         balance = accounts[i].get_balance();
@@ -138,7 +138,7 @@ int main() {
                 int position = bank.get_position ( name );
                 double balance = bank.get_balance ( position );
                 bool is_credit = bank.get_credit ( position );
-                if ( is_credit == false && (balance-amount)<0 ) {
+                if ( is_credit == false && (balance+amount)<0 ) {
                     cout << "error on line " << line << ": account cannot hold negative balance" << endl;
                 } else {
                     bank.transaction( position, amount );
