@@ -89,7 +89,7 @@ void Bank::show_accounts() {
         balance = accounts[i].get_balance();
         cout << accounts[i].get_name() << " ";
         if ( balance == 0 ) {
-            cout << " Has no money on this account." << endl;
+            cout << "has no money on this account." << endl;
         }
         else if ( balance > 0) {
             cout << "owns " << balance << " euros." << endl;
